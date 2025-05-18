@@ -1,4 +1,5 @@
 import { LABEL_NAMES_CONSTANTS } from "../constants.js";
+import InputContainer from "./InputContainer.jsx";
 
 function UserInput({ userData, onChangeInput }) {
   const { initialInvestment, annualInvestment, expectedReturn, duration } =
@@ -7,54 +8,40 @@ function UserInput({ userData, onChangeInput }) {
   return (
     <section id="user-input">
       <div className="input-group">
-        <p>
-          <label htmlFor={LABEL_NAMES_CONSTANTS.initialInvestment}>
-            initial investment
-          </label>
-          <input
-            id={LABEL_NAMES_CONSTANTS.initialInvestment}
-            type="number"
-            value={initialInvestment}
-            onChange={(event) =>
-              onChangeInput("initialInvestment", event.target.value)
-            }
-          />
-        </p>
-        <p>
-          <label htmlFor={LABEL_NAMES_CONSTANTS.annualInvestment}>
-            annual investment
-          </label>
-          <input
-            id={LABEL_NAMES_CONSTANTS.annualInvestment}
-            type="number"
-            value={annualInvestment}
-            onChange={(event) =>
-              onChangeInput("annualInvestment", event.target.value)
-            }
-          />
-        </p>
-        <p>
-          <label htmlFor={LABEL_NAMES_CONSTANTS.expectedReturn}>
-            expected return
-          </label>
-          <input
-            id={LABEL_NAMES_CONSTANTS.expectedReturn}
-            type="number"
-            value={expectedReturn}
-            onChange={(event) =>
-              onChangeInput("expectedReturn", event.target.value)
-            }
-          />
-        </p>
-        <p>
-          <label htmlFor={LABEL_NAMES_CONSTANTS.duration}>duration</label>
-          <input
-            id={LABEL_NAMES_CONSTANTS.duration}
-            type="number"
-            value={duration}
-            onChange={(event) => onChangeInput("duration", event.target.value)}
-          />
-        </p>
+        <InputContainer
+          id={LABEL_NAMES_CONSTANTS.initialInvestment}
+          label={"initial investment"}
+          type="number"
+          value={initialInvestment}
+          onChange={(event) =>
+            onChangeInput("initialInvestment", event.target.value)
+          }
+        />
+        <InputContainer
+          id={LABEL_NAMES_CONSTANTS.annualInvestment}
+          label={"annual investment"}
+          type="number"
+          value={annualInvestment}
+          onChange={(event) =>
+            onChangeInput("annualInvestment", event.target.value)
+          }
+        />
+        <InputContainer
+          id={LABEL_NAMES_CONSTANTS.expectedReturn}
+          label={"expected return"}
+          type="number"
+          value={expectedReturn}
+          onChange={(event) =>
+            onChangeInput("expectedReturn", event.target.value)
+          }
+        />
+        <InputContainer
+          id={LABEL_NAMES_CONSTANTS.duration}
+          label={"duration"}
+          type="number"
+          value={duration}
+          onChange={(event) => onChangeInput("duration", event.target.value)}
+        />
       </div>
     </section>
   );
