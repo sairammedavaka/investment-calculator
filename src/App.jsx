@@ -13,12 +13,8 @@ function App() {
 
   function handleInputChange(identifier, value) {
     setInputValues((prevState) => {
-      return { ...prevState, [identifier]: value ? Number(value) : "" };
+      return { ...prevState, [identifier]: value ? +value : "" };
     });
-  }
-
-  if (!inputValues.duration) {
-    alert("Duration must be greater than zero.");
   }
 
   return (

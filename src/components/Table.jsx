@@ -1,26 +1,30 @@
-import TableRowData from "./TableRowData.jsx";
-import { calculateInvestmentResults } from "../util/investment";
+import { calculateInvestmentResults, formatter } from "../util/investment";
 
 function Table({ userData }) {
   const { initialInvestment, annualInvestment, expectedReturn, duration } =
     userData;
 
-  const annualData = calculateInvestmentResults({ ...userData });
+  let investmentResults = [];
+
+  if (
+    initialInvestment > 0 &&
+    annualInvestment > 0 &&
+    expectedReturn > 0 &&
+    duration > 0
+  ) {
+    investmentResults = calculateInvestmentResults({ ...userData });
+  } else {
+    return <p className="center">Invalid input data.</p>;
+  }
 
   let updatedInvestmentResults = [];
 
-  if (
-    initialInvestment &&
-    annualInvestment &&
-    expectedReturn &&
-    duration &&
-    annualData.length > 0
-  ) {
-    updatedInvestmentResults = annualData.map((data, index) => {
+  if (investmentResults.length > 0) {
+    updatedInvestmentResults = investmentResults.map((data, index) => {
       let totalInterest = 0;
 
       for (let i = 0; i <= index; i++) {
-        totalInterest += annualData[i].interest;
+        totalInterest += investmentResults[i].interest;
       }
 
       return {
@@ -47,7 +51,13 @@ function Table({ userData }) {
       </thead>
       <tbody>
         {updatedInvestmentResults.map((data) => (
-          <TableRowData key={data.year} rowData={data} />
+          <tr>
+            <td>{data.year}</td>
+            <td>{formatter.format(data.investmentValue)}</td>
+            <td>{formatter.format(data.interest)}</td>
+            <td>{formatter.format(data.totalInterest)}</td>
+            <td>{formatter.format(data.investedCapital)}</td>
+          </tr>
         ))}
       </tbody>
     </table>

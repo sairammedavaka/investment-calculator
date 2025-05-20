@@ -9,38 +9,49 @@ function UserInput({ userData, onChangeInput }) {
     <section id="user-input">
       <div className="input-group">
         <InputContainer
-          id={LABEL_NAMES_CONSTANTS.initialInvestment}
+          id={LABEL_NAMES_CONSTANTS.INITIAL_INVESTMENT}
           label={"initial investment"}
           type="number"
           value={initialInvestment}
           onChange={(event) =>
-            onChangeInput("initialInvestment", event.target.value)
+            onChangeInput(
+              LABEL_NAMES_CONSTANTS.INITIAL_INVESTMENT,
+              event.target.value
+            )
           }
         />
         <InputContainer
-          id={LABEL_NAMES_CONSTANTS.annualInvestment}
+          id={LABEL_NAMES_CONSTANTS.ANNUAL_INVESTMENT}
           label={"annual investment"}
           type="number"
           value={annualInvestment}
           onChange={(event) =>
-            onChangeInput("annualInvestment", event.target.value)
+            onChangeInput(
+              LABEL_NAMES_CONSTANTS.ANNUAL_INVESTMENT,
+              event.target.value
+            )
           }
         />
         <InputContainer
-          id={LABEL_NAMES_CONSTANTS.expectedReturn}
+          id={LABEL_NAMES_CONSTANTS.EXPECTED_RETURN}
           label={"expected return"}
           type="number"
           value={expectedReturn}
           onChange={(event) =>
-            onChangeInput("expectedReturn", event.target.value)
+            onChangeInput(
+              LABEL_NAMES_CONSTANTS.EXPECTED_RETURN,
+              event.target.value
+            )
           }
         />
         <InputContainer
-          id={LABEL_NAMES_CONSTANTS.duration}
+          id={LABEL_NAMES_CONSTANTS.DURATION}
           label={"duration"}
           type="number"
           value={duration}
-          onChange={(event) => onChangeInput("duration", event.target.value)}
+          onChange={(event) =>
+            onChangeInput(LABEL_NAMES_CONSTANTS.DURATION, event.target.value)
+          }
         />
       </div>
     </section>
